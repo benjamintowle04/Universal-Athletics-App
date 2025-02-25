@@ -64,8 +64,7 @@ const EnterSkills = ({ navigation }: RouterProps) => {
     }
 
     const moveToUploadProfilePicture = () => {
-        navigation.navigate("UploadProfilePicture");
-        console.log("Moving to Upload Profile Picture");
+        navigation.navigate("AccountSummary");
     } 
 
     return (

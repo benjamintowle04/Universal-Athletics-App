@@ -3,6 +3,7 @@ import React, {useContext} from 'react'
 import { FIREBASE_AUTH } from '../../firebase_config';
 import { RouterProps } from '../types/RouterProps';
 import { UserContext } from '../contexts/UserContext';
+import { BottomNavBar } from '../components/navigation/BottomNavBar';
 
 
 const Home = ({ navigation }: RouterProps) => {    
@@ -23,11 +24,14 @@ const Home = ({ navigation }: RouterProps) => {
       <Text>{userData.phoneNumber}</Text>
       <Text>{userData.bio}</Text>
 
+
       <Image
         source={require('../images/praiseDaLord.jpg')}
         className="h-full w-full"
         resizeMode="contain"
-      />    
+      />   
+
+       
     </View>
   )
 }
