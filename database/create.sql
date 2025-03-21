@@ -11,7 +11,7 @@ CREATE TABLE Member_Info(
     Member_ID INT(4) NOT NULL AUTO_INCREMENT, 
     First_Name NCHAR(20),
     Last_Name NCHAR(20),
-    Email NCHAR(20),
+    Email NCHAR(50),
     Phone NCHAR(15) NOT NULL,
     Biography NCHAR(200),
     Profile_Pic NCHAR(250),

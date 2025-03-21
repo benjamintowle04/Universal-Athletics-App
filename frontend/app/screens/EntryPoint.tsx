@@ -32,6 +32,5 @@ const EntryPoint = ({ navigation }: RouterProps) => {
   );
 };
 
-  
 
 export default EntryPoint;
