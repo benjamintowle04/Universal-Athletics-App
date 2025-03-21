@@ -10,6 +10,8 @@ import com.universalathletics.cloudStorage.service.GoogleCloudStorageService;
 import com.universalathletics.memberInfo.entity.MemberInfoEntity;
 import com.universalathletics.memberInfo.service.MemberProfileService;
 
+import java.io.IOException;
+
 //------------------------ MemberProfile Controller Class ----------------------//
 /**
  * REST Controller for handling member profile operations.
@@ -42,14 +44,18 @@ public class MemberProfileController {
     // ------------------------- Update Member Profile Endpoint --------------------------//
     /**
      * Updates a member's profile information.
-     * Handles validation and processing of profile data updates.
      * 
-     * TODO: Implement endpoint for updating member profile
-     * - Validate input data
-     * - Process updates
-     * - Handle errors
-     * - Return updated profile
+     * @param firebaseId The Firebase ID of the member to update
+     * @param memberProfile The updated profile information
+     * @return ResponseEntity containing the updated member profile
      */
+    @PutMapping("/{firebaseId}")
+    public ResponseEntity<MemberInfoEntity> updateMemberProfile(
+            @PathVariable String firebaseId,
+            @RequestBody MemberInfoEntity memberProfile) {
+        MemberInfoEntity updatedMember = memberProfileService.updateMemberProfile(firebaseId, memberProfile);
+        return ResponseEntity.ok(updatedMember);
+    }
 
     // ------------------------- Update Profile Image Endpoint --------------------------//
     /**
@@ -62,6 +68,18 @@ public class MemberProfileController {
      * - Update profile picture URL
      * - Return updated profile
      */
+    @PutMapping("/{firebaseId}/profile-image")
+    public ResponseEntity<MemberInfoEntity> updateProfileImage(
+            @PathVariable String firebaseId,
+            @RequestParam("profilePic") MultipartFile profilePic) {
+        try {
+            MemberInfoEntity updatedMember = memberProfileService.updateProfileImage(firebaseId, profilePic);
+            return ResponseEntity.ok(updatedMember);
+        } catch (IOException e) {
+            // Handle image upload failure
+            return ResponseEntity.badRequest().build();
+        }
+    }
 
     // ------------------------- Validate Profile Fields Endpoint ----------------------//
     /**

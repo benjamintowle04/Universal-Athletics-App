@@ -94,8 +94,7 @@ public class MemberInfoService {
                 .orElseThrow(() -> new EntityNotFoundException("Member not found with id: " + id));
     }
 
-    // --------------------------------- Get All Members
-    // --------------------------//
+    // --------------------------------- Get All Members --------------------------//
     /**
      * Retrieves all members from the database.(GET)
      *
@@ -105,8 +104,7 @@ public class MemberInfoService {
         return memberInfoRepository.findAll();
     }
 
-    // --------------------------------- Get Member By Firebase Id
-    // ----------------------------//
+    // --------------------------------- Get Member By Firebase Id ----------------------------//
     /**
      * Retrieves a member by their Firebase ID.(GET)
      *  
@@ -120,8 +118,7 @@ public class MemberInfoService {
     }
 
 
-    // --------------------------------- Delete Member
-    // ----------------------------//
+    // --------------------------------- Delete Member ----------------------------//
     /**
      * Deletes a member from the database.(DELETE)
      * 
